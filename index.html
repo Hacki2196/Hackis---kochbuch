@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#294738">
+<title>Hackis Kochbuch</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="leaf">🍃</span><div><h1>Hackis Kochbuch</h1><p>Meine Rezepte · Meine Lieblingsgerichte</p></div></div>
+  <input id="search" type="search" placeholder="Rezept suchen …" aria-label="Rezept suchen">
+</header>
+<main>
+  <section class="stats"><div><b id="count">0</b><span>Rezepte</span></div><div><b id="favCount">0</b><span>Favoriten</span></div></section>
+  <nav class="tabs"><button class="active" data-filter="all">Alle Rezepte</button><button data-filter="fav">♥ Favoriten</button></nav>
+  <section id="recipeList" class="recipes"><div class="empty"><div>📖</div><h2>Dein Kochbuch wartet!</h2><p>Speichere dein erstes Lieblingsrezept.</p></div></section>
+  <section class="panel">
+    <h2 id="formTitle">＋ Neues Rezept</h2>
+    <form id="recipeForm">
+      <label>Rezeptname<input id="name" required placeholder="z. B. Hackis Lieblingslasagne"></label>
+      <div class="grid">
+        <label>Kategorie<select id="category"><option>Hauptgerichte</option><option>Suppen & Eintöpfe</option><option>Aufläufe</option><option>Kuchen & Torten</option><option>Desserts</option><option>Salate</option><option>Beilagen</option><option>Frühstück</option><option>Sonstiges</option></select></label>
+        <label>Portionen<input id="portions" type="number" min="1" value="4"></label>
+        <label>Zubereitungszeit (Min.)<input id="minutes" type="number" min="0" placeholder="z. B. 30"></label>
+      </div>
+      <label>Foto vom fertigen Gericht<input id="photo" type="file" accept="image/*"></label>
+      <label>Zutaten & Mengen<textarea id="ingredients" rows="5" required placeholder="500 g Nudeln&#10;200 g Käse&#10;…"></textarea></label>
+      <label>Zubereitung<textarea id="instructions" rows="6" required placeholder="Schritt für Schritt …"></textarea></label>
+      <div class="actions"><button class="primary" type="submit" id="saveBtn">Rezept speichern</button><button type="button" class="secondary" id="cancelEdit" hidden>Abbrechen</button></div>
+    </form>
+  </section>
+  <section class="panel backup">
+    <h2>☁️ Sicherung & Umzug</h2>
+    <p>Exportiere dein Kochbuch inklusive Rezeptfotos als Sicherungsdatei. Auf einem anderen Gerät kannst du sie wieder importieren.</p>
+    <div class="actions"><button id="exportBtn" class="secondary">Backup exportieren</button><label class="fileButton">Backup importieren<input id="importFile" type="file" accept="application/json,.json"></label></div>
+    <small>Hinweis: Die Sicherungsdatei enthält deine Rezepte und Bilder. Bewahre sie an einem sicheren Ort auf.</small>
+  </section>
+</main>
+<dialog id="detailDialog"><button class="close" id="closeDialog" aria-label="Schließen">×</button><div id="detailContent"></div></dialog>
+<footer>🍃 Mit Liebe gekocht – Hackis Kochbuch</footer>
+<script src="app.js"></script>
+</body>
+</html>
